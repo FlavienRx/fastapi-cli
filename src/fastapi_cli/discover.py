@@ -3,7 +3,7 @@ import sys
 from dataclasses import dataclass
 from logging import getLogger
 from pathlib import Path
-from typing import List, Union
+from typing import List, Tuple, Union
 
 from fastapi_cli.exceptions import FastAPICLIException
 
@@ -72,7 +72,7 @@ def get_module_data_from_path(path: Path) -> ModuleData:
 
 def get_app_name(
     *, mod_data: ModuleData, app_name: Union[str, None] = None
-) -> tuple[str, FastAPI]:
+) -> Tuple[str, FastAPI]:
     try:
         mod = importlib.import_module(mod_data.module_import_str)
     except (ImportError, ValueError) as e:
